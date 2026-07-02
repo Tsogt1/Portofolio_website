@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Tsogt Batjargal — Data Platform / DataOps Engineer",
+  description = "Data Platform / DataOps engineer in Calgary. I build and run cloud data platforms end to end — Azure, Snowflake, Airflow, Terraform — plus the infrastructure under them.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="/">tsogt<span>.</span>b</a>
+        <div class="nav-links">
+          <a href="/#about" class="hide-sm">About</a>
+          <a href="/#skills" class="hide-sm">Skills</a>
+          <a href="/#experience" class="hide-sm">Experience</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} Tsogt Batjargal — Calgary, AB</span>
+        <span>Built with Astro · hosted on Cloudflare Pages</span>
+      </div>
+    </footer>
+  </body>
+</html>

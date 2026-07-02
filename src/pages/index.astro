@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const contact = {
+  email: "tsoglog.uli@gmail.com",
+  linkedin: "https://www.linkedin.com/in/tsogt-batjargal/",
+  github: "https://github.com/Tsogt1",
+  location: "Calgary, AB, Canada",
+};
+
+const skillGroups = [
+  {
+    title: "Data engineering",
+    skills: ["Apache Airflow / Astronomer", "ETL / ELT", "Change Data Capture", "Incremental pipelines", "Data modeling", "Parquet", "Kafka"],
+  },
+  {
+    title: "Warehouse & SQL",
+    skills: ["Snowflake", "Streams / Tasks / Procs", "RBAC & masking", "SQL", "MySQL", "PostgreSQL", "SAP HANA"],
+  },
+  {
+    title: "Cloud",
+    skills: ["Azure Data Factory", "Synapse", "Azure Functions", "Blob / ADLS", "Key Vault", "Azure DevOps", "AWS (S3, Glue, Redshift, Lambda)"],
+  },
+  {
+    title: "DataOps & IaC",
+    skills: ["Terraform", "CI/CD", "Docker / Podman", "Git", "Linux", "systemd", "Proxmox"],
+  },
+  {
+    title: "Languages & BI",
+    skills: ["Python", "C# / .NET", "Bash", "PowerShell", "R", "Power BI", "Tableau"],
+  },
+  {
+    title: "Industrial IT / OT",
+    skills: ["SCADA / PLC", "OSIsoft PI", "DCS / Ignition", "IT–OT data integration"],
+  },
+];
+
+const growing = ["Databricks / Spark", "dbt (to prod)", "Kubernetes", "Prometheus / Grafana"];
+
+const experience = [
+  {
+    title: "Data Engineer",
+    org: "Summit Nanotech",
+    dates: "May 2023 – Present",
+    note: "Calgary, AB · direct-lithium-extraction clean-tech",
+    points: [
+      "Architected and operate a production data platform that orchestrates ~40 Airflow pipelines, generated from configuration instead of hand-coded.",
+      "Built incremental MySQL → Parquet → Azure Blob extraction with watermark-based change tracking across multiple data domains.",
+      "Designed a multi-zone Snowflake warehouse (landing → staging → curated) with change-data-capture, role-based access control, and data-masking policies.",
+      "Shipped changes through Azure DevOps CI/CD with isolated staging and production environments; owned the platform's Terraform, containers, Linux hosting, backups, and runbooks.",
+    ],
+  },
+  {
+    title: "Data & Analytics Engineer",
+    org: "Rio Tinto (Oyu Tolgoi LLC)",
+    dates: "2017 – 2021",
+    note: "Mongolia · one of the world's largest copper-gold mines",
+    points: [
+      "Built ETL pipelines connecting SAP, Ariba, and operational sources into Azure for cleaner, more accessible reporting.",
+      "Automated dashboards and SQL validation checks that cut manual reporting and recurring data-quality issues.",
+    ],
+  },
+  {
+    title: "Process Automation & IT/OT",
+    org: "Rio Tinto (Oyu Tolgoi LLC)",
+    dates: "2011 – 2017",
+    note: "Mongolia",
+    points: [
+      "Integrated PLC / concentrator data into live reporting and enhanced SCADA/HMI logic; built automation tools in C#, Python, and APIs.",
+      "Maintained mission-critical IT/OT systems (SAP, OSIsoft PI, SCADA, networking) for remote mine sites and 24/7 production.",
+    ],
+  },
+];
+
+const projects = [
+  {
+    tag: "Data platform",
+    title: "Cloud data platform (Airflow → Snowflake)",
+    desc: "End-to-end pipeline platform: config-driven Airflow DAGs, incremental extraction with CDC, and a multi-zone Snowflake warehouse — all deployed through CI/CD across staging and prod.",
+    stack: ["Airflow", "Snowflake", "Azure", "Python", "CI/CD"],
+  },
+  {
+    tag: "Personal · DevSecOps",
+    title: "Self-hosted data & AI infrastructure",
+    desc: "A homelab platform I build and run on personal time: isolated networks, hardened Linux, security enforced by design (root-owned Git guardrails, least-privilege OAuth), backups and restore testing.",
+    stack: ["Proxmox", "Terraform", "Linux", "Tailscale", "systemd"],
+  },
+  {
+    tag: "Infrastructure",
+    title: "Cloud-native infra migration",
+    desc: "Migrated container workloads to Fedora CoreOS + Podman Quadlets with a Terraform control plane and Azure DevOps pipelines gated on production approval — a zero-downtime cutover with rollback.",
+    stack: ["Fedora CoreOS", "Podman", "Terraform", "Azure DevOps"],
+  },
+  {
+    tag: "Applied AI",
+    title: "Snowflake RAG & semantic search",
+    desc: "Document-ingestion and retrieval-augmented-generation apps on Snowflake Cortex Search, putting searchable answers over internal documents in front of non-technical teams.",
+    stack: ["Snowflake Cortex", "Python", "Streamlit", "LLMs"],
+  },
+];
+---
+
+<Layout>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Data Platform · DataOps · Cloud Data Engineering</p>
+      <h1>Hi, I'm Tsogt — I build and run<br /><span class="accent">cloud data platforms</span>, end to end.</h1>
+      <p class="hero-sub">
+        From the pipeline that pulls the data, to the Snowflake warehouse it lands in, to the
+        Terraform and CI/CD underneath — I tend to own the whole platform, not just one slice.
+      </p>
+      <p class="hero-meta">📍 {contact.location} · Permanent Resident · open to hybrid in Calgary / Alberta</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn" href="/resume.pdf">Résumé (PDF)</a>
+        <a class="btn" href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href={contact.github} target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="eyebrow">About</p>
+      <h2 class="section-title">Data engineer with an infrastructure spine</h2>
+      <div class="about-grid">
+        <p class="first">
+          I'm a data platform engineer with 5+ years in data engineering and 13+ years across data,
+          BI, systems integration, and industrial IT/OT. I specialize in building reliable,
+          observable data pipelines and the cloud infrastructure they run on.
+        </p>
+        <p>
+          My path is a little unusual: I started in process and automation engineering on one of the
+          world's largest mining operations, moved into data and analytics, retrained in Canada
+          (diplomas in Data Analytics and Computer Programming), and have been building data
+          platforms and infrastructure ever since. That background means I speak both "data" and
+          "operations" — a useful bridge for energy, industrial, and clean-tech teams.
+        </p>
+        <p>
+          What I care about: pipelines that are reliable and observable, infrastructure that's
+          reproducible in code, and security that's enforced by design rather than by hoping people
+          follow the rules.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">Toolbox</h2>
+      <p class="section-lead">Core stack I use in production, plus what I'm actively deepening.</p>
+      <div class="skill-grid">
+        {skillGroups.map((group) => (
+          <div class="skill-card">
+            <h3>{group.title}</h3>
+            <div class="chips">
+              {group.skills.map((s) => <span class="chip">{s}</span>)}
+            </div>
+          </div>
+        ))}
+        <div class="skill-card">
+          <h3>Currently leveling up</h3>
+          <div class="chips">
+            {growing.map((s) => <span class="chip grow">{s}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="container">
+      <p class="eyebrow">Experience</p>
+      <h2 class="section-title">Where I've built things</h2>
+      <div class="timeline">
+        {experience.map((job) => (
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <span class="job-title">{job.title}</span>
+                <span class="job-org"> · {job.org}</span>
+              </div>
+              <span class="job-dates">{job.dates}</span>
+            </div>
+            <p class="section-lead" style="margin: 4px 0 0; font-size: 0.9rem;">{job.note}</p>
+            <ul>
+              {job.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <p class="eyebrow">Projects</p>
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-lead">A few things that show the end-to-end range — details generalized where the work is an employer's.</p>
+      <div class="project-grid">
+        {projects.map((p) => (
+          <article class="project-card">
+            <span class="tag">{p.tag}</span>
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+            <div class="stack">
+              {p.stack.map((s) => <span>{s}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h2 class="section-title">Let's talk</h2>
+      <p class="contact-lead">
+        Open to Data Platform / DataOps / Data Engineering roles — hybrid in Calgary or elsewhere in
+        Alberta. If you're building something in data and want someone who can own it end to end, get
+        in touch.
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href={`mailto:${contact.email}`}>Email me</a>
+        <a class="btn" href={contact.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href={contact.github} target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</Layout>
