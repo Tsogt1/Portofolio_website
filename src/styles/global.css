@@ -122,6 +122,16 @@ section:first-of-type { border-top: none; }
 .hero-meta { color: var(--muted); font-family: var(--mono); font-size: 0.9rem; margin-bottom: 28px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
 
+/* ---------- Architecture diagram ---------- */
+.arch-figure { margin: 0; }
+.arch-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.arch-scroll svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 760px; /* keep labels legible on phones — scroll instead of shrink */
+}
+
 /* ---------- Chips / skills ---------- */
 .skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
 .skill-card {

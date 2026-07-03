@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import archSvg from "../assets/data-platform.svg?raw";
 
 const contact = {
   email: "tsoglog.uli@gmail.com",
@@ -196,6 +197,22 @@ const projects = [
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section id="architecture">
+    <div class="container">
+      <p class="eyebrow">Architecture</p>
+      <h2 class="section-title">The platform, end to end</h2>
+      <p class="section-lead">
+        A genericized view of the production data platform I build and run — data flowing from
+        source systems through to the people who use it, with the platform layer underneath that
+        keeps it reliable, secure, and rebuildable from code.
+      </p>
+      <figure class="arch-figure" aria-label="Architecture diagram: sources feed Airflow, which lands Parquet in Azure Blob and orchestrates ELT into a multi-zone Snowflake warehouse serving Power BI and RAG apps — all running on a platform layer of Terraform, CI/CD, Key Vault, Linux containers, and reliability tooling.">
+        <div class="arch-scroll" set:html={archSvg} />
+      </figure>
     </div>
   </section>
 
