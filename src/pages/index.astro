@@ -23,7 +23,7 @@ const skillGroups = [
   },
   {
     title: "DataOps & IaC",
-    skills: ["Terraform", "CI/CD", "Docker / Podman", "Git", "Linux", "systemd", "Proxmox"],
+    skills: ["Terraform", "CI/CD", "OIDC / workload identity federation", "Docker / Podman", "Git", "Linux", "systemd", "Proxmox"],
   },
   {
     title: "Languages & BI",
@@ -40,7 +40,7 @@ const growing = ["Databricks / Spark", "dbt (to prod)", "Kubernetes", "Prometheu
 const experience = [
   {
     title: "Data Engineer",
-    org: "Summit Nanotech",
+    org: "Summit Lithium Technology",
     dates: "May 2023 – Present",
     note: "Calgary, AB · direct-lithium-extraction clean-tech",
     points: [
@@ -81,15 +81,15 @@ const projects = [
   },
   {
     tag: "Personal · DevSecOps",
-    title: "Self-hosted data & AI infrastructure",
-    desc: "A homelab platform I build and run on personal time: isolated networks, hardened Linux, security enforced by design (root-owned Git guardrails, least-privilege OAuth), backups and restore testing.",
-    stack: ["Proxmox", "Terraform", "Linux", "Tailscale", "systemd"],
+    title: "Multi-environment IaC platform on Proxmox",
+    desc: "A homelab-to-production infra platform I design, build, and run on personal time: three isolated Terraform environments (dev/staging/prod) deploying immutable Fedora CoreOS VMs via Ignition, six Azure DevOps pipelines with OIDC workload-identity federation instead of stored Azure service-principal secrets, and a fully tested backup/DR process with a completed restore drill.",
+    stack: ["Terraform", "Fedora CoreOS", "Proxmox", "Azure DevOps", "OIDC"],
   },
   {
-    tag: "Infrastructure",
-    title: "Cloud-native infra migration",
-    desc: "Migrated container workloads to Fedora CoreOS + Podman Quadlets with a Terraform control plane and Azure DevOps pipelines gated on production approval — a zero-downtime cutover with rollback.",
-    stack: ["Fedora CoreOS", "Podman", "Terraform", "Azure DevOps"],
+    tag: "Personal · Platform ops",
+    title: "Self-service ops automation for the homelab",
+    desc: "Podman Quadlets run every container as a native systemd unit — scheduler, templated workers, a scheduled reaper timer — with automatic restart and no container daemon. On top of that I built 12 custom runbook-style automations covering VM deploys, cluster health checks, backup/DR, monitoring, and IaC quality gates (tflint, checkov, terraform-docs).",
+    stack: ["Podman Quadlets", "systemd", "Terraform", "tflint/checkov", "Bash"],
   },
   {
     tag: "Applied AI",
@@ -107,10 +107,10 @@ const projects = [
       <p class="eyebrow">Data Platform · DataOps · Cloud Data Engineering</p>
       <h1>Hi, I'm Tsogt — I build and run<br /><span class="accent">cloud data platforms</span>, end to end.</h1>
       <p class="hero-sub">
-        From the pipeline that pulls the data, to the Snowflake warehouse it lands in, to the
-        Terraform and CI/CD underneath — I tend to own the whole platform, not just one slice.
+        I like owning the whole thing — from the pipeline that pulls the data, to the Snowflake
+        warehouse it lands in, to the Terraform and CI/CD underneath. Not just one slice of it.
       </p>
-      <p class="hero-meta">📍 {contact.location} · Permanent Resident · open to hybrid in Calgary / Alberta</p>
+      <p class="hero-meta">📍 Based in Calgary, AB · happy to work hybrid across Alberta</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#projects">View projects</a>
         <a class="btn" href="/resume.pdf">Résumé (PDF)</a>
@@ -124,24 +124,26 @@ const projects = [
   <section id="about">
     <div class="container">
       <p class="eyebrow">About</p>
-      <h2 class="section-title">Data engineer with an infrastructure spine</h2>
+      <h2 class="section-title">A bit about me</h2>
       <div class="about-grid">
         <p class="first">
-          I'm a data platform engineer with 5+ years in data engineering and 13+ years across data,
-          BI, systems integration, and industrial IT/OT. I specialize in building reliable,
-          observable data pipelines and the cloud infrastructure they run on.
+          I'm a data platform engineer based in Calgary. For the last 5+ years I've been building data
+          pipelines and the cloud platforms they run on — and before that I spent years in analytics,
+          BI, and industrial systems, so I've gotten to see data from a lot of different angles.
         </p>
         <p>
-          My path is a little unusual: I started in process and automation engineering on one of the
-          world's largest mining operations, moved into data and analytics, retrained in Canada
-          (diplomas in Data Analytics and Computer Programming), and have been building data
-          platforms and infrastructure ever since. That background means I speak both "data" and
-          "operations" — a useful bridge for energy, industrial, and clean-tech teams.
+          My path here wasn't exactly a straight line. I started out in process and automation
+          engineering at one of the world's largest mines, got pulled into data and analytics along
+          the way, moved to Canada and retrained (diplomas in Data Analytics and Computer
+          Programming), and I've been building data platforms ever since. That mix means I'm just as
+          comfortable talking with operations folks as I am with a data team — which turns out to be
+          pretty handy for energy, industrial, and clean-tech work.
         </p>
         <p>
-          What I care about: pipelines that are reliable and observable, infrastructure that's
-          reproducible in code, and security that's enforced by design rather than by hoping people
-          follow the rules.
+          A few things I genuinely care about: pipelines that are reliable and easy to keep an eye on,
+          infrastructure you can rebuild from code, and security that's baked in by design rather than
+          left to whether everyone remembers the rules. And when I'm off the clock, I'm usually
+          tinkering with the same ideas on my home lab.
         </p>
       </div>
     </div>
@@ -152,7 +154,7 @@ const projects = [
     <div class="container">
       <p class="eyebrow">Skills</p>
       <h2 class="section-title">Toolbox</h2>
-      <p class="section-lead">Core stack I use in production, plus what I'm actively deepening.</p>
+      <p class="section-lead">Here's the stack I reach for day to day — plus a few things I'm actively leveling up on.</p>
       <div class="skill-grid">
         {skillGroups.map((group) => (
           <div class="skill-card">
@@ -202,7 +204,7 @@ const projects = [
     <div class="container">
       <p class="eyebrow">Projects</p>
       <h2 class="section-title">Selected work</h2>
-      <p class="section-lead">A few things that show the end-to-end range — details generalized where the work is an employer's.</p>
+      <p class="section-lead">A few things I've built. Some details are kept general where the work belongs to an employer.</p>
       <div class="project-grid">
         {projects.map((p) => (
           <article class="project-card">
@@ -224,9 +226,9 @@ const projects = [
       <p class="eyebrow">Contact</p>
       <h2 class="section-title">Let's talk</h2>
       <p class="contact-lead">
-        Open to Data Platform / DataOps / Data Engineering roles — hybrid in Calgary or elsewhere in
-        Alberta. If you're building something in data and want someone who can own it end to end, get
-        in touch.
+        I'm currently open to Data Platform, DataOps, or Data Engineering roles — hybrid around Calgary,
+        or elsewhere in Alberta. If you're building something with data and want a hand from someone
+        who can take it end to end, I'd love to hear from you.
       </p>
       <div class="contact-links">
         <a class="btn btn-primary" href={`mailto:${contact.email}`}>Email me</a>

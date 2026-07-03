@@ -1,13 +1,13 @@
 # tsogtb.com — personal portfolio
 
 Personal site for **Tsogt Batjargal — Data Platform / DataOps Engineer**. Static site built with
-[Astro](https://astro.build), deployed to **Cloudflare Pages** (migrated off AWS CloudFront/S3).
+[Astro](https://astro.build). The current public domain may still serve the older AWS S3/CloudFront
+site until the new Astro build is deployed and DNS/cache cutover is complete.
 
 ## Stack
 
 - **Astro 4** — static output, ships (almost) zero JavaScript.
 - Plain CSS (`src/styles/global.css`), Google Fonts (Inter + JetBrains Mono).
-- `@astrojs/sitemap` for `sitemap-index.xml`.
 - No client framework, no build server needed — output is plain HTML/CSS.
 
 ## Local development
