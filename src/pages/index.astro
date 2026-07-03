@@ -47,7 +47,7 @@ const experience = [
     points: [
       "Architected and operate a production data platform that orchestrates ~40 Airflow pipelines, generated from configuration instead of hand-coded.",
       "Built incremental MySQL → Parquet → Azure Blob extraction with watermark-based change tracking across multiple data domains.",
-      "Designed a multi-zone Snowflake warehouse (staging → curated) with change-data-capture, role-based access control, and data-masking policies.",
+      "Designed a medallion-style Snowflake warehouse (staging → curated → consumption) — CDC merges via streams and stored procedures, dimensional models in the consumption layer, role-based access control, and data-masking policies.",
       "Shipped changes through Azure DevOps CI/CD with isolated staging and production environments; owned the platform's Terraform, containers, Linux hosting, backups, and runbooks.",
     ],
   },
@@ -77,7 +77,7 @@ const projects = [
   {
     tag: "Data platform",
     title: "Cloud data platform (Airflow → Snowflake)",
-    desc: "End-to-end pipeline platform: config-driven Airflow DAGs, incremental extraction with CDC, and a multi-zone Snowflake warehouse — all deployed through CI/CD across staging and prod.",
+    desc: "End-to-end pipeline platform: config-driven Airflow DAGs, incremental extraction with CDC, and a medallion-style Snowflake warehouse modeled through to a consumption layer — all deployed through CI/CD across staging and prod.",
     stack: ["Airflow", "Snowflake", "Azure", "Python", "CI/CD"],
   },
   {
@@ -210,7 +210,7 @@ const projects = [
         source systems through to the people who use it, with the platform layer underneath that
         keeps it reliable, secure, and rebuildable from code.
       </p>
-      <figure class="arch-figure" aria-label="Architecture diagram: sources feed Airflow, which lands Parquet in Azure Blob and orchestrates ELT into a multi-zone Snowflake warehouse serving Power BI and RAG apps — all running on a platform layer of Terraform, CI/CD, Key Vault, Linux containers, and reliability tooling.">
+      <figure class="arch-figure" aria-label="Architecture diagram: sources feed Airflow, which lands Parquet in Azure Blob and orchestrates ELT into a medallion-style Snowflake warehouse (staging, curated, consumption) serving Power BI and RAG apps — all running on a platform layer of Terraform, CI/CD, Key Vault, Linux containers, and reliability tooling.">
         <div class="arch-scroll" set:html={archSvg} />
       </figure>
     </div>
